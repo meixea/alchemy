@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d239797-aee3-4f9d-81c3-0543c7b42625" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/parsers/IngredientsParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/parsers/IngredientsParserTest.java" afterDir="false" />
+    <list default="true" id="3d239797-aee3-4f9d-81c3-0543c7b42625" name="Changes" comment="Project start.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/parsers/ReagentsSiteParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/parsers/IngredientsParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/parsers/IngredientsParserTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -56,17 +56,51 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.All in alchemy (4)">
-    <configuration name="All in alchemy (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="AlchemyPropertiesSiteParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.parsers.AlchemyPropertiesSiteParser" />
       <module name="alchemy" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.parsers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.main.Main" />
+      <module name="alchemy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AlchemyPropertyTest.findProperty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="alchemy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.main" />
+      <option name="MAIN_CLASS_NAME" value="org.main.AlchemyPropertyTest" />
+      <option name="METHOD_NAME" value="findProperty" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -79,37 +113,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in alchemy (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReagentTest.valueOf" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="alchemy" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in alchemy (4)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="alchemy" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in alchemy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="alchemy" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.main" />
+      <option name="MAIN_CLASS_NAME" value="org.main.ReagentTest" />
+      <option name="METHOD_NAME" value="valueOf" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in alchemy (4)" />
-        <item itemvalue="JUnit.All in alchemy (3)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.AlchemyPropertiesSiteParser" />
+        <item itemvalue="JUnit.AlchemyPropertyTest.findProperty" />
+        <item itemvalue="JUnit.ReagentTest.valueOf" />
         <item itemvalue="JUnit.All in alchemy (2)" />
-        <item itemvalue="JUnit.All in alchemy (1)" />
-        <item itemvalue="JUnit.All in alchemy" />
       </list>
     </recent_temporary>
   </component>
@@ -122,6 +148,29 @@
       <option name="presentableId" value="Default" />
       <updated>1695891657855</updated>
     </task>
+    <task id="LOCAL-00001" summary="Project start.">
+      <created>1695894332297</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695894332297</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project start." />
+    <option name="LAST_COMMIT_MESSAGE" value="Project start." />
   </component>
 </project>
