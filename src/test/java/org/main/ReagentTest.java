@@ -2,30 +2,31 @@ package org.main;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.main.Reagent;
 import org.parsers.AlchemyPropertiesFileParser;
-import org.parsers.FileParser;
+import org.parsers.Parser;
+import org.parsers.ReagentsFileParser;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ReagentTest {
 
     @BeforeAll
     static void setup(){
 
-        FileParser fileParser = new AlchemyPropertiesFileParser();
+        Parser propParser = new AlchemyPropertiesFileParser();
+        Parser regParser = new ReagentsFileParser();
 
         try {
-            AlchemyProperty.properties.addAll(fileParser.parse());
+            AlchemyProperty.properties.addAll(propParser.parse());
+            Reagent.reagents.addAll(regParser.parse());
         }
         catch( IOException e ){
             System.out.println(e.getMessage());
         }
-
     }
-
     @Test
     void equals(){
         Reagent p1 = new Reagent("Реагент1");
@@ -59,5 +60,13 @@ public class ReagentTest {
         String data = "Сморчок#Опустошение запаса сил#Затяжной урон запасу сил#Повышение навыка: разрушение";
         Reagent test = Reagent.valueOf(data);
         assertEquals(test.toString(), data);
+    }
+    @Test
+    void hasProperty(){
+        AlchemyProperty expected = AlchemyProperty.getProperty("Водное дыхание");
+        assertNotNull(expected);
+        assertTrue(Reagent.getReagent("Куриное яйцо").hasProperty(expected));
+        assertFalse(Reagent.getReagent("Клешня грязевого краба").hasProperty(expected));
+        assertTrue(Reagent.getReagent("Куриное яйцо").hasProperty("Водное дыхание"));
     }
 }

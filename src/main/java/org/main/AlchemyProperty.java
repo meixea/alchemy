@@ -1,18 +1,10 @@
 package org.main;
 
-import java.io.PrintStream;
 import java.util.*;
 
-public class AlchemyProperty {
+public class AlchemyProperty implements Comparable<AlchemyProperty> {
 
-    public static final Set<AlchemyProperty> properties = new TreeSet<>(
-            (p1, p2) -> {
-                int price = p2.getPrice() - p1.getPrice();
-                if( price != 0 )
-                    return price;
-
-                return p1.getName().compareTo(p2.getName());
-            });
+    public static final Set<AlchemyProperty> properties = new TreeSet<>();
 
     private static String VALUES_DELIMITER = "#";
 
@@ -24,6 +16,14 @@ public class AlchemyProperty {
         this.name = name;
         this.type = type;
         this.price = price;
+    }
+    @Override
+    public int compareTo(AlchemyProperty other){
+        int price = other.getPrice() - this.getPrice();
+        if( price != 0 )
+            return price;
+
+        return this.getName().compareTo(other.getName());
     }
     public int getPrice() {
         return price;
@@ -86,5 +86,11 @@ public class AlchemyProperty {
     public String toString(){
         String format = String.format("%%s%1$s %%-%2$ds%1$s %%d", VALUES_DELIMITER, NAME_FIELD_LENGTH);
         return String.format(format, getType(), getName(), getPrice());
+    }
+    public static AlchemyProperty getProperty(String name){
+        return properties.stream()
+                .filter(i -> i.getName().equals(name))
+                .findAny()
+                .orElse(null);
     }
 }

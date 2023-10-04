@@ -3,13 +3,13 @@ package org.main;
 import java.util.*;
 
 public class Reagent {
+    private static final String VALUES_DELIMITER = "#";
     public static final Set<Reagent> reagents = new TreeSet<>(
             Comparator.comparing(Reagent::getName)
     );
-
-    private static String VALUES_DELIMITER = "#";
-    protected List<AlchemyProperty> properties = new ArrayList<>();
     private final String name;
+
+    private List<AlchemyProperty> properties = new ArrayList<>();
 
     public Reagent(String name){
         this.name = name;
@@ -19,17 +19,7 @@ public class Reagent {
         properties.add(prop);
     }
 
-    public String getName() {
-        return name;
-    }
 
-    @Override
-    public int hashCode(){
-        if( name == null )
-            return 0;
-
-        return name.hashCode();
-    }
     @Override
     public boolean equals(Object o){
         if( this == o )
@@ -45,6 +35,31 @@ public class Reagent {
             return false;
 
         return Objects.equals(this.getName().toLowerCase(), otherName.toLowerCase());
+    }
+    @Override
+    public int hashCode(){
+        if( name == null )
+            return 0;
+
+        return name.hashCode();
+    }
+    public boolean hasProperty(AlchemyProperty property){
+        return properties.contains(property);
+    }
+    public boolean hasProperty(String property){
+        return properties.contains(AlchemyProperty.getProperty(property));
+    }
+    public String getName() {
+        return name;
+    }
+    public List<AlchemyProperty> getProperties(){
+        return properties;
+    }
+    public static Reagent getReagent(String name){
+        return reagents.stream()
+                .filter( i -> i.getName().equals(name))
+                .findAny()
+                .orElse(null);
     }
     @Override
     public String toString(){
