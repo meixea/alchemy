@@ -61,7 +61,7 @@ public class CalculableMaxPrice implements Callable<AlchemyQueue> {
 
         return new PotionCombinator(bag, numberReagents).stream()
                 .max(Comparator.comparingInt(Potion::getPrice))
-                .get();
+                .orElse(new Potion());
 
     }
     private FutureTask<AlchemyQueue> getNewVariant(Potion potion){

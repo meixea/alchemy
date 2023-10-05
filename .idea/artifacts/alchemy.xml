@@ -1,16 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jpackage" name="alchemy">
+  <artifact type="jar" name="alchemy">
     <output-path>$PROJECT_DIR$/out/artifacts/alchemy</output-path>
-    <properties id="jpackage-properties">
-      <options>
-        <option name="version" value="1.0" />
-        <option name="copyright" value="" />
-        <option name="description" value="" />
-        <option name="vendor" value="" />
-        <option name="mainClass" value="Main" />
-      </options>
-    </properties>
-    <root id="root">
+    <root id="archive" name="alchemy.jar">
       <element id="archive" name="alchemy.jar">
         <element id="module-output" name="alchemy" />
       </element>

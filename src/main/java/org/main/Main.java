@@ -3,6 +3,11 @@ package org.main;
 import org.parsers.*;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.lang.reflect.Field;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -13,38 +18,47 @@ public class Main {
     private static ThreadPoolExecutor pool;
     public static void main(String[] args) {
 
+//        System.setOut(new PrintStream(System.out, true, Charset.forName("KOI8-R")));
+
         loadDatabase();
 
-        CalcMode mode = getCalculationMode();
+        System.out.printf("%d - find maximum gain potions\n", CalcMode.MAX_GAIN.ordinal());
+        System.out.printf("%d - find powerful potion\n", CalcMode.IMBA_POTION.ordinal());
+        System.out.printf("%d - exit\n", CalcMode.EXIT.ordinal());
 
-        switch(mode) {
-            case MAX_GAIN:
-                calculateMaxGain(ReagentsBag.loadInitialReagents(REAGENTS_FILENAME));
-                break;
+        while( true ) {
+
+            CalcMode mode = getCalculationMode();
+
+            switch (mode) {
+                case MAX_GAIN:
+                    calculateMaxGain(ReagentsBag.loadInitialReagents(REAGENTS_FILENAME));
+                    break;
+                case EXIT:
+                    return;
+            }
         }
-
     }
     public static CalcMode getCalculationMode(){
 
-        HashMap<String, CalcMode> modes = new HashMap<>();
-        modes.put("1", CalcMode.MAX_GAIN);
-        modes.put("2", CalcMode.IMBA_POTION);
+        CalcMode[] modes = CalcMode.values();
 
-        System.out.println("1 - find maximum gain potions");
-        System.out.println("2 - find powerful potion");
+        int mode = -1;
 
-        String mode = null;
+        Scanner console = new Scanner(System.in);
 
-        try(Scanner console = new Scanner(System.in)){
-            while( !modes.containsKey(mode) ) {
-                System.out.print("Choose mode: ");
-                mode = console.nextLine();
+        while( mode < 0 || mode >= modes.length ) {
+            System.out.print("Choose mode: ");
+            try {
+                mode = Integer.valueOf(console.nextLine());
+            }
+            catch(NumberFormatException e){
             }
         }
 
         System.out.println("----------------------");
 
-        return modes.get(mode);
+        return modes[mode];
     }
 
     public static void loadDatabase(){
@@ -86,7 +100,7 @@ public class Main {
             result.saveTo(RESULT_FILENAME);
         }
         catch(InterruptedException | ExecutionException e){
-            System.out.println("Exception: " + e.getMessage());
+            System.out.println("CalculateMaxGain: " + e.getMessage());
         }
         finally {
             pool.shutdown();
@@ -99,15 +113,17 @@ public class Main {
         }
         @Override
         public void run(){
-            System.out.println("Start monitoring");
+
+            int count;
             try {
                 while (!isInterrupted()) {
-                    sleep(200);
-                    System.out.printf("Working: %d\n", pool.getActiveCount());
+                    sleep(2000);
+                    count =  pool.getActiveCount();
+                    if( count > 0 )
+                        System.out.printf("Working: %d\n", count);
                 }
             }
             catch(InterruptedException e){}
-            System.out.println("Finish monitoring");
         }
     }
 }
