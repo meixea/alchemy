@@ -13,8 +13,8 @@ import java.util.concurrent.*;
 
 public class Main {
     private static final String REAGENTS_FILENAME = "initial_reagents_test.txt";
-    private static final String POTION_FILENAME = "initial_potion_test.txt";
-    private static final String RESULT_FILENAME = "result.txt";
+    public static final String POTION_FILENAME = "initial_potion.txt";
+    public static final String RESULT_FILENAME = "result.txt";
     private static ThreadPoolExecutor pool;
     public static void main(String[] args) {
 
@@ -33,6 +33,9 @@ public class Main {
             switch (mode) {
                 case MAX_GAIN:
                     calculateMaxGain(ReagentsBag.loadInitialReagents(REAGENTS_FILENAME));
+                    break;
+                case IMBA_POTION:
+                    new ImbaPotion(POTION_FILENAME, RESULT_FILENAME).calculate();
                     break;
                 case EXIT:
                     return;
