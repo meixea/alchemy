@@ -9,20 +9,45 @@ import java.util.Set;
 import java.util.concurrent.*;
 
 public class ImbaPotion {
-    private AlchemyProperty target;
+
+    private final String TYPES_DELIMITER = "------------- BLACK LIST --------------";
+    private List<AlchemyProperty> whiteList = new ArrayList<>();
+    private List<Reagent> blackList = new ArrayList<>();
     private final String resultFilename;
 
     private List<FutureTask> tasks = new ArrayList<>();
     public ImbaPotion(String initialFilename, String resultFilename){
 
-        try(BufferedReader reader = new BufferedReader(new FileReader(initialFilename))) {
-            target = AlchemyProperty.valueOf(reader.readLine());
+        loadFilters(initialFilename);
+
+        this.resultFilename = resultFilename;
+    }
+    private void loadFilters(String fileName){
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+
+            String line;
+            while( true ) {
+
+                line = reader.readLine();
+                if( TYPES_DELIMITER.equals(line) )
+                    break;
+
+                whiteList.add(AlchemyProperty.valueOf(line));
+            }
+
+            while( reader.ready() ){
+                line = reader.readLine();
+                Reagent reagent = Reagent.getReagent(line);
+                if(reagent != null)
+                    blackList.add(reagent);
+            }
+
         }
         catch(IOException e){
             e.printStackTrace();
         }
 
-        this.resultFilename = resultFilename;
     }
     public void calculate(){
 
@@ -43,8 +68,7 @@ public class ImbaPotion {
 
                     Calculable task = new Calculable(
                             bag.get(index[0]),
-                            bag.get(index[1]),
-                            target.getType()
+                            bag.get(index[1])
                     );
 
                     FutureTask<List<Potion>> futureTask = new FutureTask<>(task);
@@ -78,19 +102,27 @@ public class ImbaPotion {
 
         savePotions(resultPotions);
     }
-    private List<Reagent> getReagentsWithTarget(){
+    List<Reagent> getReagentsWithTarget(){
 
         List<Reagent> result = new ArrayList<>();
 
+        AlchemyProperty mainProperty = whiteList.get(0);
         Reagent.reagents.stream()
-                .filter( reagent -> reagent.hasProperty(target) )
+                .filter( reagent -> !(blackList.contains(reagent)) )
+                .filter( reagent -> reagent.hasProperty(mainProperty) )
                 .forEach( reagent -> result.add(reagent));
+
+//        for(Reagent reagent : blackList )
+//            result.remove(reagent);
 
         return result;
     }
 
-    public AlchemyProperty getTarget() {
-        return target;
+    public List<Reagent> getBlackList() {
+        return blackList;
+    }
+    public List<AlchemyProperty> getWhiteList() {
+        return whiteList;
     }
     private void savePotions(List<Potion> potions){
         try(PrintWriter writer = new PrintWriter(resultFilename)){
@@ -109,15 +141,15 @@ public class ImbaPotion {
             e.printStackTrace();
         }
     }
-    private static class Calculable implements Callable<List<Potion>> {
+    private class Calculable implements Callable<List<Potion>> {
 
         Reagent r1;
         Reagent r2;
         private AlchemyType potionType;
-        public Calculable(Reagent r1, Reagent r2, AlchemyType potionType){
+        public Calculable(Reagent r1, Reagent r2){
             this.r1 = r1;
             this.r2 = r2;
-            this.potionType = potionType;
+            this.potionType = whiteList.get(0).getType();
         }
         @Override
         public List<Potion> call(){
@@ -132,6 +164,7 @@ public class ImbaPotion {
 
             Reagent.reagents.stream()
                     .filter( reagent -> (!reagent.equals(r1) && !reagent.equals(r2)) )
+                    .filter( reagent -> !blackList.contains(reagent) )
                     .map(reagent -> new Potion(r1, r2, reagent) )
                     .filter(potion -> checkPotion(potion, baseSize) )
                     .forEach(potion -> result.add(potion));
@@ -147,6 +180,10 @@ public class ImbaPotion {
 
             for(AlchemyProperty prop : commons)
                 if( prop.getType() != potionType)
+                    return false;
+
+            for(AlchemyProperty property : whiteList)
+                if( !commons.contains(property) )
                     return false;
 
             return true;

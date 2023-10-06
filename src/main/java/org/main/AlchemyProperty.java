@@ -56,11 +56,22 @@ public class AlchemyProperty implements Comparable<AlchemyProperty> {
                 Objects.equals(this.name, other.name);
     }
     public static AlchemyProperty valueOf(String value) throws FormatUnknownException {
+
+        if(value == null || value.equals(""))
+            throw new FormatUnknownException();
+
         String[] parts = value.split(VALUES_DELIMITER);
+
         if(parts.length != 3)
             throw new FormatUnknownException();
 
-        AlchemyType type = AlchemyType.valueOf(parts[0]);
+        AlchemyType type;
+        try {
+            type = AlchemyType.valueOf(parts[0]);
+        }
+        catch(IllegalArgumentException e){
+            throw new FormatUnknownException();
+        }
 
         String name = parts[1].strip();
 

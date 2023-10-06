@@ -25,6 +25,9 @@ public class Reagent {
         if( this == o )
             return true;
 
+        if( o == null )
+            return false;
+
         String otherName;
 
         if(o instanceof String)

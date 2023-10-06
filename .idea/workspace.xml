@@ -9,7 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d239797-aee3-4f9d-81c3-0543c7b42625" name="Changes" comment="Mode 2 done." />
+    <list default="true" id="3d239797-aee3-4f9d-81c3-0543c7b42625" name="Changes" comment="Jar generated.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alchemy-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/alchemy-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alchemy.bat" beforeDir="false" afterPath="$PROJECT_DIR$/alchemy.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initial_potion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/initial_potion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/properties.txt" beforeDir="false" afterPath="$PROJECT_DIR$/properties.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/result.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/AlchemyProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/AlchemyProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/ImbaPotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/ImbaPotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Reagent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/Reagent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/main/ImbaPotionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/main/ImbaPotionTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,20 +60,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.main.Main" />
@@ -90,17 +101,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CombinatorTest.combinator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImbaPotionTest.getReagentsWithTarget" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="alchemy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.combinators.*" />
+          <option name="PATTERN" value="org.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.combinators" />
-      <option name="MAIN_CLASS_NAME" value="org.combinators.CombinatorTest" />
-      <option name="METHOD_NAME" value="combinator" />
+      <option name="PACKAGE_NAME" value="org.main" />
+      <option name="MAIN_CLASS_NAME" value="org.main.ImbaPotionTest" />
+      <option name="METHOD_NAME" value="getReagentsWithTarget" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImbaPotionTest.loadFilters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="alchemy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.main" />
+      <option name="MAIN_CLASS_NAME" value="org.main.ImbaPotionTest" />
+      <option name="METHOD_NAME" value="loadFilters" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,7 +149,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PotionTest.compareTo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImbaPotionTest.special" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="alchemy" />
       <extension name="coverage">
         <pattern>
@@ -131,8 +158,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.main" />
-      <option name="MAIN_CLASS_NAME" value="org.main.PotionTest" />
-      <option name="METHOD_NAME" value="compareTo" />
+      <option name="MAIN_CLASS_NAME" value="org.main.ImbaPotionTest" />
+      <option name="METHOD_NAME" value="special" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,10 +168,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ImbaPotionTest.special" />
+        <item itemvalue="JUnit.ImbaPotionTest.getReagentsWithTarget" />
+        <item itemvalue="JUnit.ImbaPotionTest.loadFilters" />
         <item itemvalue="JUnit.ImbaPotionTest.loadingTarget" />
-        <item itemvalue="JUnit.PotionTest.compareTo" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="JUnit.CombinatorTest.combinator" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696503669817</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Jar generated.">
+      <created>1696504031351</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696504031351</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +240,7 @@
     <MESSAGE value="Local parsers and database formed." />
     <MESSAGE value="Bag fixed." />
     <MESSAGE value="Mode 2 done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Mode 2 done." />
+    <MESSAGE value="Jar generated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Jar generated." />
   </component>
 </project>

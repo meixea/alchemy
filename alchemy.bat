@@ -1,1 +1,1 @@
-java -jar target/alchemy-1.0-SNAPSHOT.jar
+java -jar alchemy-1.0-SNAPSHOT.jar
